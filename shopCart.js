@@ -7,6 +7,7 @@ const shopContent = document.querySelector('.shop__content')
 const tableBody = document.querySelector('.table__body')
 const navCount = document.querySelector('.nav__count')
 const totalSum = document.querySelector('.total__sum')
+const totalCount = document.querySelector('.total__count')
 
 
 /**ФУНКЦИЯ изменения кол-ва товара в корзине */
@@ -29,13 +30,16 @@ const calcCountItemsInShopCart = () => {
 }
 
 /**ФУНКЦИЯ подсчета общей стоимости товаров, и вывода результата в консоль при каждом открытии корзины*/
-const sumToTotalSumSpan = () => {
+const getTotalSumAndCountOfGoods = () => {
     const cardsLS = JSON.parse(localStorage.getItem('shopCart')) || [];
     let sum = 0;
+    let count = 0;
     cardsLS.forEach((el) => {
         sum += el.count * el.price;
+        count += +el.count;
     })
     totalSum.innerHTML = sum;
+    totalCount.innerHTML = count;
 }
 
 //***ФУНКЦИЯ отрисовки карточек в корзине */
@@ -93,7 +97,7 @@ const paintShopCart = () => {
 
         })
     })
-    sumToTotalSumSpan();
+    getTotalSumAndCountOfGoods();
 }
 
 //метод some возвращает true если найден обьект ПЕРВЫЙ удовлетворяющий условию
