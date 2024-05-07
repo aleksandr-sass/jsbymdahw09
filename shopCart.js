@@ -8,7 +8,7 @@ const tableBody = document.querySelector('.table__body')
 const navCount = document.querySelector('.nav__count')
 
 
-//***ФУНКЦИЯ изменения кол-ва товара в корзине */
+/**ФУНКЦИЯ изменения кол-ва товара в корзине */
 const updateCardsInShopCart = (card, count) => {
     const cardsLS = JSON.parse(localStorage.getItem('shopCart')) || []
     const newArr = cardsLS.map(el => {
@@ -25,6 +25,16 @@ const updateCardsInShopCart = (card, count) => {
 const calcCountItemsInShopCart = () => {
     const cardsLS = JSON.parse(localStorage.getItem('shopCart')) || []
     navCount.textContent = cardsLS.length
+}
+
+/**ФУНКЦИЯ подсчета общей стоимости товаров, и вывода результата в консоль при каждом открытии корзины*/
+const sumToConsole = () => {
+    const cardsLS = JSON.parse(localStorage.getItem('shopCart')) || [];
+    let sum = 0;
+    cardsLS.forEach((el) => {
+        sum += el.count * el.price;
+    })
+    console.log(sum);
 }
 
 //***ФУНКЦИЯ отрисовки карточек в корзине */
@@ -82,7 +92,7 @@ const paintShopCart = () => {
 
         })
     })
-    calcCountItemsInShopCart()
+    sumToConsole();
 }
 
 //метод some возвращает true если найден обьект ПЕРВЫЙ удовлетворяющий условию
