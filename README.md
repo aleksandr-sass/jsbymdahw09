@@ -69,3 +69,25 @@ const paintShopCart = () => {
   getTotalSumAndCountOfGoods();
 }
 ```
+
+### 3 Добавить кнопку очистки корзины
+
+1. HTML:
+```
+<div class="total">
+  ...
+  <button class="total__clear">Очистить</button>
+</div> 
+```
+
+2. JS:
+```
+const totalClear = document.querySelector('.total__clear')
+
+const clearShopCart = () => {
+    localStorage.setItem('shopCart', '[]');
+    paintShopCart();
+}
+
+totalClear.addEventListener('click', clearShopCart);
+```
