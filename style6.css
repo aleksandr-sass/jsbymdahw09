@@ -164,3 +164,7 @@ ul {
     background-color: brown;
     cursor: pointer;
 }
+
+.total {
+    padding-left: 20px;
+}
