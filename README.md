@@ -39,3 +39,33 @@ const paintShopCart = () => {
     padding-left: 20px;
 }
 ```
+
+### 2 Подсчёт общего количества всех товаров:
+1. Добавляем в разметку нужные html-элементы:
+```
+<div class="total">
+  ...
+  <h3>Товаров в корзине: <span class="total__count">0</span></h3>
+</div>
+```
+2. JS: выполняем рефакторинг ранее написанного кода:
+```
+const totalCount = document.querySelector('.total__count')
+
+const getTotalSumAndCountOfGoods = () => {
+    const cardsLS = JSON.parse(localStorage.getItem('shopCart')) || [];
+    let sum = 0;
+    let count = 0;
+    cardsLS.forEach((el) => {
+        sum += el.count * el.price;
+        count += +el.count;
+    })
+    totalSum.innerHTML = sum;
+    totalCount.innerHTML = count;
+}
+
+const paintShopCart = () => {
+  ...
+  getTotalSumAndCountOfGoods();
+}
+```
