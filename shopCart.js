@@ -8,6 +8,7 @@ const tableBody = document.querySelector('.table__body')
 const navCount = document.querySelector('.nav__count')
 const totalSum = document.querySelector('.total__sum')
 const totalCount = document.querySelector('.total__count')
+const totalClear = document.querySelector('.total__clear')
 
 
 /**ФУНКЦИЯ изменения кол-ва товара в корзине */
@@ -99,6 +100,13 @@ const paintShopCart = () => {
     })
     getTotalSumAndCountOfGoods();
 }
+
+const clearShopCart = () => {
+    localStorage.setItem('shopCart', '[]');
+    paintShopCart();
+}
+
+totalClear.addEventListener('click', clearShopCart);
 
 //метод some возвращает true если найден обьект ПЕРВЫЙ удовлетворяющий условию
 //***ФУНКЦИЯ поиска карточки товара (объекта)
