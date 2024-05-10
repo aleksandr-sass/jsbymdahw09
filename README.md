@@ -103,3 +103,20 @@ const paintShopCart = () => {
     calcCountItemsInShopCart();    
 }
 ```
+
+### 5. Сделать так, чтобы корзина закрывалась и на крестик 
+* JS (файл app.js):
+```
+...
+// добавим эту строку кода в верхней части файла app.js:
+const modalClose = document.querySelector('.modal__close')
+...
+
+// полностью перепишем этот EventListener:
+ modal.addEventListener('click', (e)=> {
+    e.preventDefault();
+    if ((e.target == modal) || (e.target.closest('.modal__close'))) {
+        modal.style.display = 'none';
+    }
+ })
+```
