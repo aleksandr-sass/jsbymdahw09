@@ -92,3 +92,13 @@ const clearShopCart = () => {
 
 totalClear.addEventListener('click', clearShopCart);
 ```
+
+### 4. Починить span с числом строк в корзине
+* Проблема была в том, что при добавлении строк в корзину и при удалении их из неё, span с количеством строк товаров не изменялся. Для решения этой проблемы я добавил вызов функции calcCountItemsInShopCart() в конец кода функции paintShopCart():
+
+```
+const paintShopCart = () => {
+  ...
+    calcCountItemsInShopCart();    
+}
+```
