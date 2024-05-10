@@ -5,6 +5,7 @@ const dropdownList = document.querySelector('.dropdown__list')
 const shopLinks = document.querySelectorAll('.shop__link')
 const shopContent = document.querySelector('.shop__content')
 const modal = document.querySelector('.modal')
+const modalClose = document.querySelector('.modal__close')
 const navLinkShopCart = document.querySelector('.nav__link_shop-cart')
 const formInput = document.querySelector('.form__input')
 
@@ -161,7 +162,7 @@ dropdown.addEventListener('click', (e)=> {
 
  modal.addEventListener('click', (e)=> {
     e.preventDefault();
-    if (e.target.classList.contains('modal')) {
+    if ((e.target == modal) || (e.target.closest('.modal__close'))) {
         modal.style.display = 'none';
     }
  })
