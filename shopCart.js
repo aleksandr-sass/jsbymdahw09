@@ -24,7 +24,7 @@ const updateCardsInShopCart = (card, count) => {
     paintShopCart()
 }
 
-//***ФУНКЦИЯ подсчета количества товаров и суммы (позже) */
+//***ФУНКЦИЯ подсчета строк в корзине с товарами */
 const calcCountItemsInShopCart = () => {
     const cardsLS = JSON.parse(localStorage.getItem('shopCart')) || []
     navCount.textContent = cardsLS.length
@@ -98,6 +98,7 @@ const paintShopCart = () => {
 
         })
     })
+    calcCountItemsInShopCart();
     getTotalSumAndCountOfGoods();
 }
 
